@@ -8,16 +8,25 @@ namespace Sales_mvc.Models
     public class Seller
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage ="{0} required")]
+        [StringLength(60, MinimumLength =5,ErrorMessage ="NOME DEVE TER ENTRE 5 E 50 CARACTERES")]
         public string Name { get; set; }
 
+
+        [Required(ErrorMessage = "{0} required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+
+        [Required(ErrorMessage = "{0} required")]
         [Display(Name="Birth Date")]
         [DisplayFormat(DataFormatString ="{0:dd:MM:yyyy}")]
         [DataType(DataType.Date)]
         public DateTime BirthDay { get; set; }
 
+        [Range(100.0,50000, ErrorMessage ="{0} must be from {1} to {2}")]
+        [Required(ErrorMessage = "{0} required")]
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString ="{0:f2}")]
         public double BaseSalary { get; set; }

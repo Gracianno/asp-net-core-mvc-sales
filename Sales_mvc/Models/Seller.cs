@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Sales_mvc.Models
@@ -8,8 +9,17 @@ namespace Sales_mvc.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Display(Name="Birth Date")]
+        [DisplayFormat(DataFormatString ="{0:dd:MM:yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime BirthDay { get; set; }
+
+        [Display(Name = "Base Salary")]
+        [DisplayFormat(DataFormatString ="{0:f2}")]
         public double BaseSalary { get; set; }
         public Department department { get; set; }
         public int departmentId { get; set; }
